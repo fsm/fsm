@@ -8,6 +8,10 @@ This package contains a simple interface for a [finite-state machine](https://en
 >
 > Wikipedia
 
+## Getting Started
+
+Check out our [get-started repository](https://github.com/fsm/get-started). It provides an example and a README that is more specific to building a chat-bot.
+
 ## Conversational Interfaces
 
 While the interfaces provided can be used for a large varity of state machine needs, the supported tooling is focused on building conversational interfaces.
@@ -32,7 +36,7 @@ The entire diagram above is a StateMachine.  A StateMachine is simply a map of S
 
 ### [State](https://github.com/fsm/fsm/blob/master/fsm.go#L11-L16)
 
-Each of the yellow circles is a State.
+Each of the yellow circles in the diagram is a State.
 
 ### [Emitter](https://github.com/fsm/fsm/blob/br.readme/fsm.go#L18-L22)
 
@@ -50,7 +54,7 @@ This is effectively a model for the user who is communicating with your conversa
 
 A StateMachine is actually comprised of BuildState, which is a function that returns a State.
 
-The reason for this function is the fact that this function also gives our State access to an Emitter (how to output data) and Traverser.
+The reason for this function is the fact that this function also gives our State access to an Emitter and Traverser.
 
 ### [Store](https://github.com/fsm/fsm/blob/br.readme/fsm.go#L24-L29)
 
