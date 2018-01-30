@@ -10,9 +10,10 @@ type BuildState func(Emitter, Traverser) *State
 
 // State represents an individual state in a larger state machine
 type State struct {
-	Slug        string
-	EntryAction func() error
-	Transition  func(interface{}) *State
+	Slug          string
+	EntryAction   func() error
+	ReentryAction func() error
+	Transition    func(interface{}) *State
 }
 
 // Emitter is a generic interface to output arbitrary data.
