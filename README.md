@@ -32,7 +32,7 @@ Here we have a partial state machine of how a customer may interact with a bank 
 
 ### [StateMachine](https://github.com/fsm/fsm/blob/br.readme/fsm.go#L3-L5)
 
-The entire diagram above is a StateMachine.  A StateMachine is simply a map of States.
+The entire diagram above is a StateMachine.  A StateMachine is an array of all States in the State Machine.
 
 ### [State](https://github.com/fsm/fsm/blob/master/fsm.go#L11-L16)
 

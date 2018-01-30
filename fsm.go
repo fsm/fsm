@@ -1,8 +1,7 @@
 package fsm
 
-// StateMachine is a k:v map that maps the
-// slug of States to BuildState functions
-type StateMachine map[string]BuildState
+// StateMachine is an array of all BuildState functions
+type StateMachine []BuildState
 
 // BuildState is a function that generates a State
 // with access to a specific Emitter and Traverser
