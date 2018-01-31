@@ -3,6 +3,11 @@ package fsm
 // StateMachine is an array of all BuildState functions
 type StateMachine []BuildState
 
+// StateMap is a k:v map for all BuildState functions
+// in a StateMachine.  This is exclusively utilized
+// by the internal workings of targets.
+type StateMap map[string]BuildState
+
 // BuildState is a function that generates a State
 // with access to a specific Emitter and Traverser
 type BuildState func(Emitter, Traverser) *State
