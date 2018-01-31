@@ -10,7 +10,7 @@ This package contains a simple interface for a [finite-state machine](https://en
 
 ## Getting Started
 
-Check out our [get-started repository](https://github.com/fsm/get-started). It provides an example and a README that is more specific to building a chat-bot.
+Check out our [example repository](https://github.com/fsm/example). It provides an example and a README that is more specific to building a chat-bot.
 
 ## Conversational Interfaces
 
