@@ -10,7 +10,9 @@ This package contains a simple interface for a [finite-state machine](https://en
 
 ## Getting Started
 
-Check out our [example repository](https://github.com/fsm/example). It provides an example and a README that is more specific to building a chat-bot.
+Check out our [example repository](https://github.com/fsm/example). It provides an example and a README that is more specific to building a chatbot.
+
+After looking at the example, you can get started building your own chatbot by cloning down the [getting started](https://github.com/fsm/getting-started) repo as a base for your project.
 
 ## Conversational Interfaces
 
@@ -30,33 +32,33 @@ Here we have a partial state machine of how a customer may interact with a bank 
 
 ![statemachine](https://user-images.githubusercontent.com/2105067/35538170-c049b938-0501-11e8-8064-1ba3d9b576be.png)
 
-### [StateMachine](https://github.com/fsm/fsm/blob/br.readme/fsm.go#L3-L5)
+### [StateMachine](https://github.com/fsm/fsm/blob/master/fsm.go#L3-L4)
 
 The entire diagram above is a StateMachine.  A StateMachine is an array of all States in the State Machine.
 
-### [State](https://github.com/fsm/fsm/blob/master/fsm.go#L11-L16)
+### [State](https://github.com/fsm/fsm/blob/master/fsm.go#L15-L21)
 
 Each of the yellow circles in the diagram is a State.
 
-### [Emitter](https://github.com/fsm/fsm/blob/br.readme/fsm.go#L18-L22)
+### [Emitter](https://github.com/fsm/fsm/blob/master/fsm.go#L23-L27)
 
 An Emitter is a definition of how to output data.
 
 This is the 1/2 of what buys us the ability to deploy our conversational interfaces to multiple platforms.
 
-### [Traverser](https://github.com/fsm/fsm/blob/master/fsm.go#L31-L42)
+### [Traverser](https://github.com/fsm/fsm/blob/master/fsm.go#L36-L47)
 
 A Traverser is the abstract element that is traversing the state machine.
 
 This is effectively a model for the user who is communicating with your conversational interface.
 
-### [BuildState](https://github.com/fsm/fsm/blob/br.readme/fsm.go#L7-L9)
+### [BuildState](https://github.com/fsm/fsm/blob/master/fsm.go#L11-L13)
 
 A StateMachine is actually comprised of BuildState, which is a function that returns a State.
 
 The reason for this function is the fact that this function also gives our State access to an Emitter and Traverser.
 
-### [Store](https://github.com/fsm/fsm/blob/br.readme/fsm.go#L24-L29)
+### [Store](https://github.com/fsm/fsm/blob/master/fsm.go#L29-L34)
 
 There is also a Store that allows you to store arbitrary data for each Traverser.
 
