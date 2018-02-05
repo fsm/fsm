@@ -73,12 +73,15 @@ Currently there is support for the following platforms:
 - [Command Line](https://github.com/fsm/cli)
 - [Texting via Twilio](https://github.com/fsm/twilio)
 
-Very soon we're also going to support:
+## Roadmap
 
-- Google Home
-- Slack
-- Twitter
-- Web Deployments
+We're soon planning to support the following platforms.
+
+- [Google Home](https://developers.google.com/actions/)
+- [Slack](https://api.slack.com/bot-users)
+- [Twitter](https://developer.twitter.com/)
+- [Cortana](https://www.microsoft.com/en-us/windows/cortana)
+- Web Deployments (think something like [Product Hunt Ship](https://www.producthunt.com/ship) landing pages)
 
 > These targets libraries are extremely easy to build, so when the next hot platform comes out, your conversational interface can be easily adapted to it.
 
