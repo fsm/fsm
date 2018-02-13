@@ -2,6 +2,8 @@
 
 # FSM
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/fsm/fsm)](https://goreportcard.com/report/github.com/fsm/fsm) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/fsm/Lobby)
+
 This package contains a simple interface for a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) in Go.
 
 > [A finite-state machine] is an abstract machine that can be in exactly one of a finite number of states at any given time. The FSM can change from one state to another in response to some external inputs; the change from one state to another is called a transition. An FSM is defined by a list of its states, its initial state, and the conditions for each transition.
