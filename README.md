@@ -6,23 +6,29 @@
 
 This package contains a simple interface for a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) in Go.
 
+# What's a Finite-state Machine?
+
 > [A finite-state machine] is an abstract machine that can be in exactly one of a finite number of states at any given time. The FSM can change from one state to another in response to some external inputs; the change from one state to another is called a transition. An FSM is defined by a list of its states, its initial state, and the conditions for each transition.
 >
 > Wikipedia
 
-# Getting Started
+The FSM library was built as purely against the definition of a formal finite-state machine as possible, so the Wikipedia definition holds true for this library.
 
-Check out the [getting started](https://github.com/fsm/getting-started) repository.  It provides an example and a README that is more specific to building a chatbot.
+# Why Use a Finite-state Machine?
 
-# Conversational Interfaces
-
-While the interfaces provided can be used for a large varity of state machine needs, the supported tooling is focused on building conversational interfaces.
+FSM was specifically made to build light-weight / generic conversational interfaces (think chatbots), so if that's what your trying to do you'll find this library quite nice.
 
 Building a conversational interface as a finite-state machine will reduce a ton of cognitive overhead, as at any given point you only have to concern yourself with the current step in the conversation.
 
-With FSM you can build robust conversational interfaces that **run on any platform with a single codebase.**
+What is most attractive about FSM is the fact that you can build robust conversational interfaces that **run on any platform with a single codebase.**
 
 If you dig into the source code of FSM, you'll find there's not really any code at all. The core of this library is entirely just interfaces. This is what buys the ability to deploy your conversational interface to any platform.
+
+# Getting Started
+
+If you're looking to build a chatbot, check out the [getting started](https://github.com/fsm/getting-started) repository.
+
+This README is actually quite high-level and won't get into the details you'll want to start building.
 
 # Supported Platforms
 
