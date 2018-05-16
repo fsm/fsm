@@ -53,11 +53,20 @@ type Store interface {
 // StateMachine.  This interface that is responsible
 // for managing the state of that individual
 type Traverser interface {
+	// UUID
 	UUID() string
 	SetUUID(string)
+
+	// Platform
+	Platform() string
+	SetPlatform(string)
+
+	// State
 	CurrentState() string
 	SetCurrentState(string)
-	Upsert(key string, value interface{}) error
-	Fetch(key string) (interface{}, error)
-	Delete(key string) error
+
+	// Data
+	Upsert(key string, value interface{})
+	Fetch(key string) interface{}
+	Delete(key string)
 }
