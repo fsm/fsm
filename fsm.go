@@ -1,5 +1,9 @@
 package fsm
 
+// StartState is a constant for defining the slug of
+// the start state for all StateMachines.
+const StartState = "start"
+
 // StateMachine is an array of all BuildState functions
 type StateMachine []BuildState
 
@@ -12,6 +16,9 @@ type StateMap map[string]BuildState
 // with access to a specific Emitter and Traverser
 type BuildState func(Emitter, Traverser) *State
 
+// InputToIntentTransformer converts the input of a platform to an *Intent.
+type InputToIntentTransformer func(input interface{}, validIntents []*Intent) *Intent
+
 // Type is a definition of what a Intent slot value can be
 type Type struct {
 	Slug          string
@@ -22,10 +29,10 @@ type Type struct {
 
 // Intent is an event that occurs that can trigger a transition
 type Intent struct {
-	Name       string
-	Aliases    []string
-	Slots      map[string]*Type
-	Utterances []string
+	Slug          string
+	PlatformSlugs map[string]string
+	Slots         map[string]*Type
+	Utterances    []string
 }
 
 // State represents an individual state in a larger state machine
