@@ -12,12 +12,28 @@ type StateMap map[string]BuildState
 // with access to a specific Emitter and Traverser
 type BuildState func(Emitter, Traverser) *State
 
+// Type is a definition of what a Intent slot value can be
+type Type struct {
+	Slug          string
+	PlatformSlugs map[string]string
+	Options       []string
+	IsValid       func(string) bool
+}
+
+// Intent is an event that occurs that can trigger a transition
+type Intent struct {
+	Name       string
+	Aliases    []string
+	Slots      map[string]*Type
+	Utterances []string
+}
+
 // State represents an individual state in a larger state machine
 type State struct {
-	Slug          string
-	EntryAction   func() error
-	ReentryAction func() error
-	Transition    func(interface{}) *State
+	Slug         string
+	Entry        func(isReentry bool) error
+	ValidIntents func() []*Intent
+	Transition   func(*Intent) *State
 }
 
 // Emitter is a generic interface to output arbitrary data.
