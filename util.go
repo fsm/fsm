@@ -1,6 +1,26 @@
 package fsm
 
-const FSMPlatform = "fsm.platform"
+import (
+	"regexp"
+	"strings"
+)
+
+var (
+	cleanInputRegex  = regexp.MustCompile("[^a-z0-9 ]+")
+	doubleSpaceRegex = regexp.MustCompile(" +")
+)
+
+// CleanInput converts the input string to only the following:
+// - Lowercase Letters (a-z)
+// - Numbers (0-9)
+// - Spaces ( )
+//
+// Uppercase letters are converted to lowercase letters, but any character outside
+// of what is noted above is stripped from the string. Double (or more) spaces are
+// converted into a single space.
+func CleanInput(input string) string {
+	return doubleSpaceRegex.ReplaceAllString(cleanInputRegex.ReplaceAllString(strings.ToLower(input), ""), " ")
+}
 
 // GetStateMap converts a fsm.StateMachine into a fsm.StateMap
 func GetStateMap(stateMachine StateMachine) StateMap {
@@ -12,14 +32,14 @@ func GetStateMap(stateMachine StateMachine) StateMap {
 }
 
 // Step performs a single step through a StateMachine
-func Step(platform, uuid string, intent *Intent, store Store, emitter Emitter, stateMap StateMap) {
+func Step(platform, uuid string, input interface{}, inputToIntentTransformer InputToIntentTransformer, store Store, emitter Emitter, stateMap StateMap) {
 	// Get Traverser
 	newTraverser := false
 	traverser, err := store.FetchTraverser(uuid)
 	if err != nil {
 		traverser, _ = store.CreateTraverser(uuid)
-		traverser.SetCurrentState("start")
-		traverser.Upsert("fsm.platform", platform)
+		traverser.SetCurrentState(StartState)
+		traverser.SetPlatform(platform)
 		newTraverser = true
 	}
 
@@ -30,10 +50,15 @@ func Step(platform, uuid string, intent *Intent, store Store, emitter Emitter, s
 	}
 
 	// Transition
-	newState := currentState.Transition(intent)
-	if newState != nil {
-		traverser.SetCurrentState(newState.Slug)
-		performEntryAction(newState, emitter, traverser, stateMap)
+	intent, params := inputToIntentTransformer(input, currentState.ValidIntents())
+	if intent != nil {
+		newState := currentState.Transition(intent, params)
+		if newState != nil {
+			traverser.SetCurrentState(newState.Slug)
+			performEntryAction(newState, emitter, traverser, stateMap)
+		} else {
+			currentState.Entry(true)
+		}
 	} else {
 		currentState.Entry(true)
 	}
