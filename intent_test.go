@@ -25,7 +25,7 @@ var (
 		},
 	}
 
-	intent = &fsm.Intent{
+	SampleIntent = &fsm.Intent{
 		Slug: "sample-intent",
 		Slots: map[string]*fsm.Type{
 			"gender": TypeGender,
@@ -40,7 +40,7 @@ var (
 )
 
 func TestStandardParse(t *testing.T) {
-	testParse(t, intent, "I am a 29 year old male.",
+	testParse(t, SampleIntent, "I am a 29 year old male.",
 		true,
 		map[string]string{
 			"age":    "29",
@@ -50,7 +50,7 @@ func TestStandardParse(t *testing.T) {
 }
 
 func TestCapsParse(t *testing.T) {
-	testParse(t, intent, "I AM A 29 YEAR OLD MALE!",
+	testParse(t, SampleIntent, "I AM A 29 YEAR OLD MALE!",
 		true,
 		map[string]string{
 			"age":    "29",
@@ -60,7 +60,7 @@ func TestCapsParse(t *testing.T) {
 }
 
 func TestDoubleSpacingParse(t *testing.T) {
-	testParse(t, intent, "I am a 29 year  old male.",
+	testParse(t, SampleIntent, "I am a 29 year  old male.",
 		true,
 		map[string]string{
 			"age":    "29",
@@ -70,7 +70,7 @@ func TestDoubleSpacingParse(t *testing.T) {
 }
 
 func TestUtteranceParse(t *testing.T) {
-	testParse(t, intent, "I am a 29 year old male.",
+	testParse(t, SampleIntent, "I am a 29 year old male.",
 		true,
 		map[string]string{
 			"age":    "29",
@@ -78,7 +78,7 @@ func TestUtteranceParse(t *testing.T) {
 		},
 	)
 
-	testParse(t, intent, "I am a female and am 30",
+	testParse(t, SampleIntent, "I am a female and am 30",
 		true,
 		map[string]string{
 			"age":    "30",
@@ -86,7 +86,7 @@ func TestUtteranceParse(t *testing.T) {
 		},
 	)
 
-	testParse(t, intent, "The male is 30.",
+	testParse(t, SampleIntent, "The male is 30.",
 		true,
 		map[string]string{
 			"age":    "30",
@@ -96,24 +96,24 @@ func TestUtteranceParse(t *testing.T) {
 }
 
 func TestUtteranceNoMatch(t *testing.T) {
-	testParse(t, intent, "I am 29.",
+	testParse(t, SampleIntent, "I am 29.",
 		false,
 		nil,
 	)
 
-	testParse(t, intent, "",
+	testParse(t, SampleIntent, "",
 		false,
 		nil,
 	)
 }
 
 func TestSlotNoMatch(t *testing.T) {
-	testParse(t, intent, "I am a 29a year old male.",
+	testParse(t, SampleIntent, "I am a 29a year old male.",
 		false,
 		nil,
 	)
 
-	testParse(t, intent, "I am a 29 year old dog.",
+	testParse(t, SampleIntent, "I am a 29 year old dog.",
 		false,
 		nil,
 	)
