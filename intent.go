@@ -5,15 +5,6 @@ import (
 	"strings"
 )
 
-var (
-	strippedSlotMatchRegex = regexp.MustCompile(`\\\{[^ ]*\\\}`)
-	cleanUtteranceRegex    = regexp.MustCompile("[^a-z0-9 {}]+")
-	slotsRegex             = regexp.MustCompile(`\{([^ ]*)\}`)
-)
-
-// InputToIntentTransformer converts the input of a platform to an *Intent.
-type InputToIntentTransformer func(input interface{}, validIntents []*Intent) (*Intent, map[string]string)
-
 // Intent is an event that occurs that can trigger a transition
 type Intent struct {
 	Slug          string
@@ -29,6 +20,12 @@ type Type struct {
 	Options       []string
 	IsValid       func(string) bool
 }
+
+var (
+	strippedSlotMatchRegex = regexp.MustCompile(`\\\{[^ ]*\\\}`)
+	cleanUtteranceRegex    = regexp.MustCompile("[^a-z0-9 {}]+")
+	slotsRegex             = regexp.MustCompile(`\{([^ ]*)\}`)
+)
 
 // Parse checks if an input string matches this intent. If the input string
 // matches this intent, any parameters are also returned.

@@ -1,28 +1,6 @@
 package fsm
 
-import (
-	"regexp"
-	"strings"
-)
-
-var (
-	cleanInputRegex  = regexp.MustCompile("[^a-z0-9 ]+")
-	doubleSpaceRegex = regexp.MustCompile(" +")
-)
-
-// CleanInput converts the input string to only the following:
-// - Lowercase Letters (a-z)
-// - Numbers (0-9)
-// - Spaces ( )
-//
-// Uppercase letters are converted to lowercase letters, but any character outside
-// of what is noted above is stripped from the string. Double (or more) spaces are
-// converted into a single space.
-func CleanInput(input string) string {
-	return doubleSpaceRegex.ReplaceAllString(cleanInputRegex.ReplaceAllString(strings.ToLower(input), ""), " ")
-}
-
-// GetStateMap converts a fsm.StateMachine into a fsm.StateMap
+// GetStateMap converts a StateMachine into a StateMap
 func GetStateMap(stateMachine StateMachine) StateMap {
 	stateMap := make(StateMap, 0)
 	for _, buildState := range stateMachine {
@@ -31,8 +9,12 @@ func GetStateMap(stateMachine StateMachine) StateMap {
 	return stateMap
 }
 
-// Step performs a single step through a StateMachine
-func Step(platform, uuid string, input interface{}, inputToIntentTransformer InputToIntentTransformer, store Store, emitter Emitter, stateMap StateMap) {
+// Step performs a single step through a StateMachine.
+//
+// This function handles the nuance of the logic for a single step through a state machine.
+// ALL fsm-target's should call Step directly, and not attempt to handle the process of stepping through
+// the StateMachine, so all platforms function with the same logic.
+func Step(platform, uuid string, input interface{}, InputTransformer InputTransformer, store Store, emitter Emitter, stateMap StateMap) {
 	// Get Traverser
 	newTraverser := false
 	traverser, err := store.FetchTraverser(uuid)
@@ -50,7 +32,7 @@ func Step(platform, uuid string, input interface{}, inputToIntentTransformer Inp
 	}
 
 	// Transition
-	intent, params := inputToIntentTransformer(input, currentState.ValidIntents())
+	intent, params := InputTransformer(input, currentState.ValidIntents())
 	if intent != nil {
 		newState := currentState.Transition(intent, params)
 		if newState != nil {
@@ -64,14 +46,19 @@ func Step(platform, uuid string, input interface{}, inputToIntentTransformer Inp
 	}
 }
 
+// performEntryAction handles the logic of switching states and calling the Entry function.
+//
+// It is handled via this function, as a state can manually switch states in the Entry function.
+// If that occurs, we then perform the Entry function of that state.  This continues until we land
+// in a state whose Entry action doesn't shift us to a new state.
 func performEntryAction(state *State, emitter Emitter, traverser Traverser, stateMap StateMap) error {
 	err := state.Entry(false)
 	if err != nil {
 		return err
 	}
 
-	// If we switch states in EntryAction, we want to perform
-	// the next states EntryAction
+	// If we switch states in Entry action, we want to perform
+	// the next states Entry action.
 	currentState := traverser.CurrentState()
 	if currentState != state.Slug {
 		shiftedState := stateMap[currentState](emitter, traverser)
