@@ -20,7 +20,7 @@ var (
 	catchAllIntent = &fsm.Intent{
 		Slug: "catch-all",
 		Slots: map[string]*fsm.Type{
-			"input": &fsm.Type{
+			"input": {
 				Slug: "literal",
 				IsValid: func(string) bool {
 					return true
