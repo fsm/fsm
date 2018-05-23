@@ -22,13 +22,11 @@ Building a conversational interface as a finite-state machine will reduce a ton 
 
 What is most attractive about FSM is the fact that you can build robust conversational interfaces that **run on any platform with a single codebase.**
 
-If you dig into the source code of FSM, you'll find there's not really any code at all. The core of this library is entirely just interfaces. This is what buys the ability to deploy your conversational interface to any platform.
-
 # Getting Started
 
 If you're looking to build a chatbot, check out the [getting started](https://github.com/fsm/getting-started) repository.
 
-This README is actually quite high-level and won't get into the details you'll want to start building.
+This README is more high-level and won't get into the details you'll want to start building.
 
 # Supported Platforms
 

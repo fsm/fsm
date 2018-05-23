@@ -1,5 +1,9 @@
 package fsm
 
+// StartState is a constant for defining the slug of
+// the start state for all StateMachines.
+const StartState = "start"
+
 // StateMachine is an array of all BuildState functions
 type StateMachine []BuildState
 
@@ -14,10 +18,10 @@ type BuildState func(Emitter, Traverser) *State
 
 // State represents an individual state in a larger state machine
 type State struct {
-	Slug          string
-	EntryAction   func() error
-	ReentryAction func() error
-	Transition    func(interface{}) *State
+	Slug         string
+	Entry        func(isReentry bool) error
+	ValidIntents func() []*Intent
+	Transition   func(*Intent, map[string]string) *State
 }
 
 // Emitter is a generic interface to output arbitrary data.
@@ -37,11 +41,20 @@ type Store interface {
 // StateMachine.  This interface that is responsible
 // for managing the state of that individual
 type Traverser interface {
+	// UUID
 	UUID() string
 	SetUUID(string)
+
+	// Platform
+	Platform() string
+	SetPlatform(string)
+
+	// State
 	CurrentState() string
 	SetCurrentState(string)
-	Upsert(key string, value interface{}) error
-	Fetch(key string) (interface{}, error)
-	Delete(key string) error
+
+	// Data
+	Upsert(key string, value interface{})
+	Fetch(key string) interface{}
+	Delete(key string)
 }
