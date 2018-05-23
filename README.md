@@ -2,7 +2,12 @@
 
 # FSM
 
-[![Build Status](https://travis-ci.org/fsm/fsm.svg?branch=master)](https://travis-ci.org/fsm/fsm) [![codecov](https://codecov.io/gh/fsm/fsm/branch/master/graph/badge.svg)](https://codecov.io/gh/fsm/fsm) [![Go Report Card](https://goreportcard.com/badge/github.com/fsm/fsm)](https://goreportcard.com/report/github.com/fsm/fsm) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/fsm/Lobby)
+[![Version](https://img.shields.io/github/tag/fsm/fsm.svg)](https://github.com/fsm/fsm/releases)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/fsm/fsm/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/fsm/fsm.svg?branch=master)](https://travis-ci.org/fsm/fsm)
+[![codecov](https://codecov.io/gh/fsm/fsm/branch/master/graph/badge.svg)](https://codecov.io/gh/fsm/fsm)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fsm/fsm)](https://goreportcard.com/report/github.com/fsm/fsm)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/fsm/Lobby)
 
 This package contains a simple interface for a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) in Go.
 
@@ -48,7 +53,3 @@ We're soon planning to support the following platforms.
 - Web Deployments (think something like [Product Hunt Ship](https://www.producthunt.com/ship) landing pages)
 
 > These targets libraries are relatively easy to build, so when the next hot platform comes out, your conversational interface can be easily adapted to it!
-
-# License
-
-[MIT](LICENSE.md)
