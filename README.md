@@ -2,7 +2,7 @@
 
 # FSM
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/fsm/fsm)](https://goreportcard.com/report/github.com/fsm/fsm) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/fsm/Lobby)
+[![Build Status](https://travis-ci.org/fsm/fsm.svg?branch=master)](https://travis-ci.org/fsm/fsm) [![codecov](https://codecov.io/gh/fsm/fsm/branch/master/graph/badge.svg)](https://codecov.io/gh/fsm/fsm) [![Go Report Card](https://goreportcard.com/badge/github.com/fsm/fsm)](https://goreportcard.com/report/github.com/fsm/fsm) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/fsm/Lobby)
 
 This package contains a simple interface for a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) in Go.
 
