@@ -1,13 +1,14 @@
 <a href="https://github.com/fsm"><p align="center"><img src="https://user-images.githubusercontent.com/2105067/35464215-a014d512-02a9-11e8-8913-63a066f6064e.png" alt="FSM" width="350px" align="center;"/></p></a>
+<p align="center">
+  <a href="https://github.com/fsm/fsm/releases"><img src="https://img.shields.io/github/tag/fsm/fsm.svg" alt="Version"></img></a>
+  <a href="https://github.com/fsm/fsm/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License"></img></a>
+  <a href="https://travis-ci.org/fsm/fsm"><img src="https://travis-ci.org/fsm/fsm.svg?branch=master" alt="Build Status"></img></a>
+  <a href="https://codecov.io/gh/fsm/fsm"><img src="https://codecov.io/gh/fsm/fsm/branch/master/graph/badge.svg" alt="codecov"></img></a>
+  <a href="https://goreportcard.com/report/github.com/fsm/fsm"><img src="https://goreportcard.com/badge/github.com/fsm/fsm" alt="Go Report Card"></img></a>
+  <a href="https://spectrum.chat/fsm"><img alt="Join the community on Spectrum" src="https://withspectrum.github.io/badge/badge.svg"/></a>
+</p>
 
 # FSM
-
-[![Version](https://img.shields.io/github/tag/fsm/fsm.svg)](https://github.com/fsm/fsm/releases)
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/fsm/fsm/blob/master/LICENSE.md)
-[![Build Status](https://travis-ci.org/fsm/fsm.svg?branch=master)](https://travis-ci.org/fsm/fsm)
-[![codecov](https://codecov.io/gh/fsm/fsm/branch/master/graph/badge.svg)](https://codecov.io/gh/fsm/fsm)
-[![Go Report Card](https://goreportcard.com/badge/github.com/fsm/fsm)](https://goreportcard.com/report/github.com/fsm/fsm)
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/fsm/Lobby)
 
 This package contains a simple interface for a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) in Go.
 
